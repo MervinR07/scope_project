@@ -1,0 +1,745 @@
+@import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Viga', sans-serif;
+    scroll-behavior: smooth;
+}
+@keyframes robot-slide{
+    0%{
+        transform: translateX(0px);
+    }
+    50%{
+        transform: translateX(-15px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+    
+}
+.heroo-head{
+    height: 5rem;
+    background-color: aqua;
+     background-image:  url(../img/scopeindia-bkg2.png), linear-gradient(90deg, rgb(4 11 45) 0%, #04145f 100%);
+     height: 175px;
+     
+}
+.heroo-logo .logo{
+    width: 180px;
+    float: left;
+}
+.star-container{
+    float: right;
+    margin: 15px 65px 0 0;
+}
+.star-logo{
+    width: 200px;
+}
+#main_navigation{
+         position: absolute;
+    right: 00px;
+    top: 140px;
+   
+}
+.nav-elements{
+    display: inline;
+    font-family: Poppins, Arial;
+    font-size: 12px;
+    color: #d6d6d6;
+    font-weight: bold;
+    letter-spacing: 0.6pt;
+    margin-left: 100px;
+    margin-right: 100px;
+    
+}
+.nav-elements li{
+    display: inline;
+    margin: 0;
+}
+.nav-elements li a{
+    text-decoration: none;
+    color: #d6d6d6;
+    padding: 5px 5px;
+    border: 1px solid transparent; 
+}
+.registration_link {
+    background-color: red;
+    border-radius: 5px;
+    color: white !important;
+}
+.nav-elements li a:hover{
+    text-decoration: none;
+    color: #eeaf10;
+    border: 1px solid #9da5ca;
+    background-color: rgba(135, 133, 125, 0.3);
+    border-radius: 5px;
+}
+.divider1{
+   background-color: #ffb700 !important;
+    height: 5px;
+    margin-top: -3px;
+    opacity: 1;
+
+}
+.hero-intro{
+    background: linear-gradient(45deg, #e2e2e2, #fff);
+}
+.hero-intro h1{
+   font-family: Viga;
+    color: #eeaf10;
+    font-size: 35px;
+    background: linear-gradient(60deg, #04145f 0%, rgb(4 13 55) 100%);
+    padding: 7px 15px;
+    display: block;
+    margin: -20px 0px 0px 0px;
+    font-weight: normal;
+    border-top: 1.5px solid #c7ac20;
+    border-bottom: 1.5px solid #c7ac20;
+}
+.hero-intro h2{
+    font-family: Viga;
+    color: #14267c;
+    font-size: 180%;
+    display: block;
+    margin: 15px auto;
+    font-weight: normal;
+    padding: 0px 10px 0px 10px;
+}
+.hero-intro h3{
+    font-family: Viga;
+    color: #0b27a8;
+    font-size: 120%;
+    font-weight: normal;
+    text-align: justify;
+    padding: 15px;
+    margin-top: -21px;
+    margin-bottom: 0px;
+}
+.divider2{
+    background-color: #0b27a8 !important;
+    height: 5px;
+    margin-top: -3px;
+    opacity: 1;
+}
+.global-cert-container {
+    margin-top: -17px;
+    height: 100%;
+    padding-bottom: 5px;
+}
+.cert-icons{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 75px;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.cert-icons .cert-item-icon{
+   height: auto;
+   max-width: 100px;
+   
+}
+.about-it{
+    padding: 0 55px;
+    text-align: start;
+    background: linear-gradient(90deg, rgb(11 23 81) 0%, rgb(10 29 121) 31%);
+
+}
+.about-it .parent{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+}
+.about-it .parent h2{
+    font-family: Viga;
+    font-size: 35px;
+    padding: 20px 0;
+    color: #fecb00;
+}
+svg {
+    color: rgb(234, 179, 8);
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+.courses-list ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    color: #fff;
+}
+
+.courses-list ul li{
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #fff;
+    margin: 5px 0;
+}
+
+.courses-list ul li a{
+    color: white;
+    text-decoration: none;
+}
+.about-it-left p{
+    font-size: 18px;
+    margin-bottom: 26px;
+    line-height: 22px;
+    color: #fff;
+    font-weight: 16px;
+    letter-spacing: 0.5px;
+}
+.about-it-right{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+.about-it-right div{
+    background: #0b1e7d;
+    border: solid #f1ad0e 2px;
+    padding: 24px;
+    border-radius: 20px 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: transform 0.3s ease;
+}
+.about-it-right div:hover{
+    transform: scale(1.03);
+}
+.about-it-right h3{
+    margin-bottom: 10px;
+    color: #fecb00;
+    font-size: 19px;
+}
+.about-it-right p{
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+.about-it .parent .main-div{
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 20px;
+    padding-bottom: 20px;
+}
+.placement-highlight .parent h2{
+    font-family: Viga;
+    font-size: 30px;
+    text-align: center;
+    color: rgb(11, 30, 125);
+    margin: 30px;
+}
+.placement-highlight{
+    background-color: rgb(245, 245, 245);
+}
+.placement-highlight .parent{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.placement-highlight .parent .highlights{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0px, 1fr));
+    gap: 20px;
+    padding: 0px 50px 25px;
+
+}
+.placement-highlight .parent .highlights div{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
+    padding: 15px;
+    border-radius: 10px;
+}
+.placement-highlight .parent .highlights span{
+    color: rgb(229, 192, 0);
+    font-size: 40px;
+    font-weight: 700;
+}
+.placement-highlight p{
+        color: #0b27a8;
+}
+.robot{
+        background: linear-gradient(2deg, rgb(1, 27, 124) 0%, rgb(9, 23, 85) 80%);
+}
+.robot-parent{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 30px;
+}
+.robot-parent h2{
+    font-size: 45px;
+    margin-bottom: 15px;
+    text-align: center;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    padding: 5px;
+    background: linear-gradient(0deg, rgb(187, 151, 39) 29%, rgb(249, 245, 146) 50%, rgb(215, 167, 41) 76%) text;
+}
+.robot-parent h3{
+    color: rgb(11, 30, 125);
+    display: inline-block;
+    font-size: 23px;
+    margin-bottom: 22px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px, rgba(0, 0, 0, 0.19) 0px 6px 20px 0px;
+    background: linear-gradient(0deg, rgb(187, 151, 39) 3%, rgb(249, 245, 146) 56%, rgb(215, 167, 41) 100%);
+    padding: 10px 20px;
+    border-radius: 20px 2px;
+}
+.robot-parent .robo-main{
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0px,1fr));
+    gap: 20px;
+}
+ .robo-left{
+    position: relative;
+}
+.robot-pic{
+    width: 60%;
+   position: absolute;
+    left: -10px;
+    top: -15px;
+    animation: robot-slide ease-in-out 3s infinite;
+}
+.robot-pic img{
+        filter: drop-shadow(rgba(0, 0, 0, 0.5) 10px 10px 20px);
+}
+.robot img{
+    width: 100%;
+    background-size: cover;
+    object-fit: fill;
+    border-radius: 10px;
+}
+.robo-right{
+    text-align: center;
+}
+.robo-right ul{
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0px,1fr));
+    list-style: none;
+    gap: 40px;
+    margin: 0px 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(229, 192, 0);
+    border-image: initial;
+    border-radius: 20px;
+    padding: 20px;
+}
+.robo-right ul li{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.robot-parent p{
+    margin-top: 20px;
+    font-size: 20px;
+    color: #fff;
+    padding: 20px;
+}
+.full-stack{
+    padding: 20px;
+    background-color: rgb(245 245 245 / 1);
+}
+.full-stack .parent{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+}
+.full-stack .parent h2{
+    font-family: Viga;
+    font-size: 35px;
+    margin-bottom: 50px;
+    text-align: start;
+    color: #0b1e7d;
+    padding: 5px;
+}
+.full-stack .parent .main-div{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.full-stack .parent .main-div .full-stack-left{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.full-stack .parent .main-div .full-stack-left h3{
+    color: #000;
+    font-size: 22px;
+    padding: 20px;
+    margin-bottom: 12px;
+}
+.full-stack-left ul li{
+    list-style: none;
+    display: flex;
+    justify-content: start;
+    margin-bottom: 20px;
+}
+.full-stack-left span{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #e5c000;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 17px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.full-stack-left div{
+    margin-left: 20px;
+}
+.full-stack-left h4{
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+.full-stack-left p{
+    font-size: 17px;
+    color: #656363;
+    font-weight: 600;
+}
+.full-stack img{
+    width: 100%;
+    border-radius: 10px;
+    background-size: cover;
+    object-fit: fill;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.testing{
+    background: linear-gradient(90deg, rgb(11 23 81) 0%, rgb(10 29 121) 31%);
+    width: 100%;
+}
+
+.testing .parent{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 30px 0 30px;
+}
+.testing .parent h2{
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 30px;
+    margin-bottom: 20px;
+} 
+.testing .parent span{
+    color: #eec705;
+    font-size: 50px;
+}
+.testing .parent .main-div{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2,minmax(0px,1fr));
+}
+.testing .parent .main-div img{
+    width: 100%;
+    border-radius: 10px;
+    background-size: cover;
+    object-fit: fill;
+    height: 100%;
+}
+.testing .testing-right{
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    background-color: #0b1e7d;
+}
+.testing .testing-right h4{
+    color: #0b1e7d;
+    background-color: #fecb00;
+    display: inline-block;
+    font-size: 23px;
+    margin-bottom: 22px;
+    padding: 10px;
+    border-radius: 15px 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.testing .testing-right ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 20px;
+    padding: 10px;
+}
+.testing .testing-right ul li{
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 19px;
+    color: #fff;
+}
+.testing .test-content{
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 0.3px;
+    line-height: 23px;
+    margin-top: 20px;
+    padding-bottom: 50px;
+}
+.devops-section{
+    width: 100%;
+    background-color: #fff;
+}
+.devops-section .parent{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 30px 0 30px;
+}
+.devops-section .parent h2{
+    font-family: Viga;
+    color: #0b1e7d;
+    text-align: center;
+    padding: 0 30px;
+    font-size: 35px;
+    margin-bottom: 40px;
+    font-weight: bolder;
+}
+.devops-section .parent .main-div{
+    display: grid;
+    gap: 20px;
+    padding-bottom: 50px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.devops-section .parent .main-div .left-content{
+    background-color: #dededec7;
+    border-radius: 10px;
+    padding: 40px 20px 20px 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.devops-section .main-div h4{
+    display: inline-block;
+    font-size: 26px;
+    padding: 10px 20px;
+    border-radius: 0 50px 50px 0;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #d9126f;
+    color: #fff;
+    background: linear-gradient(90deg, rgb(217 18 111 / 45%) 0%, rgb(217 18 111) 10%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.devops-section .main-div ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin: 0 20px;
+}
+.devops-section .main-div ul li{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0b1e7d;
+}
+.devops-section .main-div ul li svg{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    color: #d9126f;
+}
+.devops-section img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-size: cover;
+    object-fit: fill;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.bi{
+    width: 100%;
+    background: linear-gradient(94deg, rgb(238 234 233) 10%, rgb(246 244 245) 31%);
+}
+.bi .parent{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 30px 0 30px;
+}
+.bi .parent h2{
+    font-family: Viga;
+    color: #0b1e7d;
+    text-align: center;
+    padding: 0 30px;
+    font-size: 35px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+.bi .parent .main-div{
+    display: grid;
+    gap: 20px;
+    padding: 0 20px 50px 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.bi img{
+    width: 100%;
+    background-size: cover;
+    object-fit: fill;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.bi-right{
+    padding: 10px;
+        text-align: center;
+}
+.bi-right h4{
+    font-size: 27px;
+    padding: 10px 20px;
+    background-color: #fecb00;
+    margin-top: 30px;
+    border-radius: 20px 5px 20px 5px;
+    text-align: center;
+    color: #0824b2;
+    display: inline-block;
+}
+.bi-right ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin: 20px;
+    padding: 10px;
+}
+.bi-right ul li{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #000;
+}
+.bi-right ul li svg{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    color: #e0aa0c;
+}
+.mission{
+    padding: 10px;
+    background: linear-gradient(90deg, rgb(11 23 81) 0%, rgb(10 29 121) 31%);
+}
+.mission .parent{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 30px 0 30px;
+}
+.mission .parent h2{
+    color: #fecb00;
+    font-family: Viga;
+    text-align: center;
+    font-size: 35px;
+    margin: 20px;
+    letter-spacing: 1px;
+}
+.mission .main-div{
+    display: grid;
+    gap: 30px;
+    padding: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.mission .main-div .left-content{
+    background: linear-gradient(90deg, rgb(13 29 105) 0%, rgb(10 29 121) 31%);
+    padding: 30px;
+    border-radius: 20px;
+    border: solid 2px #e5c000;
+    margin-bottom: 20px;
+} 
+.mission .svg-div{
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #e0aa0c;
+    margin-bottom: 20px;
+}
+.mission ul li{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    list-style: none;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.mission .right-content{
+    background: linear-gradient(90deg, rgb(13 29 105) 0%, rgb(10 29 121) 31%);
+    padding: 30px;
+    border-radius: 20px;
+    border: solid 2px #e5c000;
+    margin-bottom: 20px;
+}
+.mission p{
+    color: #f4f4f4;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.mission h4{
+    
+    color: #fff;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.mission .svg-div svg{
+    width: 40px;
+   
+}
+.mission .svg-div svg{
+    color: #fff;
+}
+.footer-hr{
+     background-color: #ffb700 !important;
+     height: 10px;
+     margin-top: -3px;
+     opacity: 1;
+     width: auto;
+     margin-left: -20px;
+     margin-right: -10px;
+}
+.hero-footer{
+    padding: 10px;
+    text-align: center;
+    color: white;
+    min-height: 71px;
+    background: #0a1d7b url(../images/scopeindia-blue-bkg.webp) repeat-x;
+    line-height: 21px;
+}
+.hero-footer p{
+    display: block;
+    margin: 14px;
+}
+.hero-footer a{
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 5px 10px;
+    margin: 0px 10px 10px 0px;
+}
+    .footer-line{
+        font-size: 14px;
+    }
+    .footer-line {
+          padding-left: 10px;
+    }
