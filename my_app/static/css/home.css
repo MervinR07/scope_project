@@ -743,3 +743,183 @@ a{
     .footer-line {
           padding-left: 10px;
     }
+.aboutus-section{
+    background: linear-gradient(90deg, rgb(11 23 81) 0%, rgb(10 29 121) 31%);
+    padding: 10px 60px;
+}
+.aboutus-parent{
+        margin: 20px 0 0;
+}
+.aboutus-section h2{
+    font-family: Viga;
+    font-size: 50px;
+    text-align: center;
+    color: #fecb00;
+    padding: 20px;
+    font-weight: bolder;
+}
+.aboutus-section h3{
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 25px;
+    font-family: Viga;
+    color: #f4f4f4;
+    font-weight: bolder;
+}
+.aboutus-section p{
+    color: #fff;
+    text-align: justify;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    padding: 10px 22px;
+    line-height: 25px;
+    font-weight: 500;
+}
+.star-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 20px 0;
+    margin: 0;
+    text-align: center;
+}
+.aboutus-section img{
+    width: 30%;
+}
+.aboutus-section .star-img h4{
+        color: #fff;
+        font-size: 13px;
+        font-weight: bolder;
+}
+.ourstory-parent{
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    text-align: center;
+}
+.ourstory-parent h2{
+    font-size: 37px;
+    padding: 15px 0;
+    color: #04145f;
+}
+.ourstory-parent .blue-line{
+    width: 130px;
+    height: 5px;
+    margin: auto;
+    background-color: rgb(37 99 235);
+    margin-bottom: 25px;
+}
+.story-main{
+       display: grid;
+    gap: 52px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 61px;
+    margin: 0 20px;
+}
+.story-main .story-main-left{
+    width: 100%;
+    /* padding: 20px; */
+}
+.story-main-left .founded-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.story-main-left div{
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: start;
+    background-color: #ffffff;
+
+}
+.story-main-left div h3{
+    padding: 0 0 20px 0;
+    font-size: 22px;
+    color: #04145f;
+}
+.story-main-left div p{
+    color: #0b27a8;
+    line-height: 25px;
+    padding-bottom: 15px;
+}
+.founded-info img{
+    margin-top: 20px;
+    width: 70%;
+    align-self: center;
+}
+.story-main-right{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+.story-main-right img{
+    border-radius: 10px;
+}
+.blue-parent{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    border-radius: 10px;
+}
+.blue-shadow{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(37 99 235 / 1);
+    border-radius: 10px;
+    top: -18px;
+    right: -18px;
+}
+.blue-parent .details{
+    z-index: 1;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 100%;
+    padding: 18px 12px;
+}
+.blue-parent .icon-box{
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    padding: 10px 30px;
+}
+.blue-parent .icon-box .icon-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    background-color: rgb(219 234 254 / 1);
+    border-radius: 50%;
+    height: 50px;
+}
+.blue-parent .icon-box .icon-div svg{
+    color: rgb(37 99 235 / 1);
+}
+.story-main-right div h4{
+        color: #04145f;
+}
+.story-main-right div p{
+    color: #0b27a8;
+    padding-bottom: 15px;
+    line-height: 25px;
+}
+.present-day-impact{
+    
+margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: start;
+    background-color: #ffffff;
+}
+.present-day-impact h3{
+    color: rgb(13, 13, 138);
+    padding: 0 0 20px 0;
+    font-size: 22px;
+}
