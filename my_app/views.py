@@ -6,5 +6,7 @@ def home(request):
 # Create your views here.
 def aboutus(request):
     return render(request,'aboutus.html')
-def registration(reuest):
-    return render(reuest,'registration.html')
+def registration(request):
+    return render(request,'registration.html')
+def contactus(request):
+    return render(request,'contactus.html')
