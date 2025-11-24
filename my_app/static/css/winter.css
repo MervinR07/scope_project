@@ -1,0 +1,99 @@
+/* --- Modern Blue & Black Professional Theme --- */
+
+/* Background Wrapper */
+
+.winter-wrapper {
+    height: 100vh;
+    background: linear-gradient(to bottom right, #0d1117, #0f1b2d);
+    padding-top: 60px;
+    position: relative;
+    overflow: hidden;
+    margin-top: -16px;
+}
+
+/* Frosted Glass Login Box */
+.winter-login-box {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border-radius: 18px;
+    padding: 40px 32px;
+    width: 380px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    margin-top: -15px;
+}
+
+/* Title */
+.winter-title {
+    color: #e2ecff;
+    font-weight: 700;
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+/* Subtitle */
+.winter-subtitle {
+    color: #9fb4cc;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+/* Labels */
+.winter-label {
+    color: #c9d6e8;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* Inputs */
+.winter-input {
+    border: 1px solid #30445b;
+    background: rgba(255, 255, 255, 0.05);
+    color: #e7efff;
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+.winter-input:focus {
+    color: #ffffff;
+    border-color: #4689ff;
+    box-shadow: 0 0 10px rgba(70, 137, 255, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Button */
+.winter-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #1f6feb, #1158c7);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    letter-spacing: .4px;
+    transition: 0.25s ease;
+}
+
+.winter-btn:hover {
+    background: linear-gradient(135deg, #3a8bff, #1f6feb);
+    box-shadow: 0 6px 20px rgba(31, 111, 235, 0.5);
+    transform: translateY(-2px);
+}
+
+/* Snowflakes (Blue Glow) */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    left: 0;
+    color: #4a6da8;
+    opacity: 0.7;
+    font-size: 14px;
+    animation: softSnow linear infinite;
+    filter: drop-shadow(0 0 4px #345a9e);
+}
+
+@keyframes softSnow {
+    0% { transform: translateY(-5vh) translateX(0); }
+    100% { transform: translateY(100vh) translateX(15px); }
+}

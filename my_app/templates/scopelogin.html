@@ -1,0 +1,69 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/winter.css' %}">
+{% endblock %}
+
+ {% block content %}
+ <section class="hero-intro">
+        <div class="hero-intro-content">
+        <h1  style="text-align: center;">Student Login</h1>
+        <h2  style="text-align: center;">
+        </h2>
+        </div>
+ </section>
+<div class="winter-wrapper d-flex justify-content-center align-items-center">
+
+    <div class="winter-login-box">
+
+        <h2 class="winter-title text-center">Welcome Back</h2>
+        <p class="winter-subtitle text-center">Sign in to continue</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label winter-label">Email</label>
+                <input type="email" class="form-control winter-input" name="email" value="{{ saved_email }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label winter-label">Password</label>
+                <input type="password" class="form-control winter-input" name="password">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label winter-label">Temporary Password (If First Login)</label>
+                <input type="text" class="form-control winter-input" name="temp_password">
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="form-check">
+                    <input type="checkbox" name="remember_me" class="form-check-input">
+                    <label class="form-check-label winter-label">Keep me logged in</label>
+                </div>
+
+                <a href="{% url 'forgot_password' %}" class="winter-link">Forgot password?</a>
+            </div>
+
+            <button class="winter-btn w-100">Sign In</button>
+
+        </form>
+
+        <div class="text-center mt-3">
+            <a href="{% url 'first_time_login' %}" class="winter-link">
+                First-time Login? Generate Temporary Password
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/winter.js' %}"></script>
+{% endblock %}

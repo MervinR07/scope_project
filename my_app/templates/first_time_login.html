@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/first_login.css' %}">
+{% endblock %}
+{% block content %}
+
+    <div class="winter-page">
+
+    <div class="winter-wrapper d-flex justify-content-center align-items-center">
+
+        <div class="winter-login-box">
+
+            <h2 class="winter-title text-center">First-time Login</h2>
+            <p class="winter-subtitle text-center">
+                Enter your email and we will send a temporary password.
+            </p>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="winter-label">Email</label>
+                    <input type="email" name="email" class="form-control winter-input" required>
+                </div>
+
+                <button class="winter-btn w-100 mt-2">Send Temporary Password</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <a href="{% url 'scopelogin' %}" class="winter-link">Back to Login</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+

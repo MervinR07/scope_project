@@ -39,7 +39,7 @@
 #main_navigation{
          position: absolute;
     right: 00px;
-    top: 140px;
+    top: 127px;
    
 }
 .nav-elements{
@@ -118,7 +118,7 @@
 }
 .divider2{
     background-color: #0b27a8 !important;
-    height: 5px;
+    height: 21px;
     margin-top: -3px;
     opacity: 1;
 }
@@ -961,6 +961,18 @@ margin-bottom: 30px;
     padding: 10px;
     border-radius: 5px;
 }
+.reg-container select{
+    border: 1px solid #c3ad23 !important;
+    background-color: #F5F5F5;
+    padding: 10px;
+    border-radius: 5px;
+}
+.reg-container option{
+    border: 1px solid #c3ad23 !important;
+    background-color: #F5F5F5;
+    padding: 10px;
+    border-radius: 5px;
+}
 .reg-container input[type="radio"]{
     width: 20px;
     height: 20px;
@@ -1062,4 +1074,12 @@ margin-bottom: 30px;
 }
 .contactus-section > div a:hover{
     background-color: lch(58.63% 51.37 271.95);
+}
+
+.dividerlogin:after,
+.dividerlogin:before {
+content: "";
+flex: 1;
+height: 1px;
+
 }

@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% block extra_styles %}{% endblock %}
+</head>
+<body>
+    <header>
+      <section id="navbar-div" class="heroo-head">
+       <div>
+
+        <div class="heroo-logo">
+        <a class="heroo-scopelogo">
+            <img class="logo" src="{% static 'img/scopeindia-logo-o.png' %}">
+         </a>
+        </div>
+        <div class="heroo-logo star-container">
+            <a class="heroo-starlogo">
+                <img class="star-logo" src="{% static 'img/google-rating-scope-india.webp' %}" alt="">
+            </a>
+        </div>
+
+      
+       </div>
+       <section id="main_navigation">
+       <ul class="nav-elements">
+         <li>
+            <a href="{% url 'home' %}">HERO</a>
+        </li>
+        <li>
+            <a href="{% url 'registration' %}" class="registration_link">REGISTRATION</a>
+        </li>
+        <li>
+            <a href="{% url 'aboutus' %}" target="_self">ABOUT US</a>
+        </li>
+        <li>
+            <a href="{% url 'contactus' %}" target="_self">CONTACT US</a>
+        </li>
+         <li>
+            <a href="{% url 'scopelogin' %}" target="_self">LOGIN</a>
+        </li>
+
+       </ul>
+       </section>
+
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
+
+    <footer>
+        <section class="hero-footer">
+    <hr class="footer-hr">
+    <p>We are located at Technopark TVM | Thampanoor TVM | Kochi, Kerala | Nagercoil, Tamil Nadu</p>
+    <p>
+        <a href="tel:+919745936073" title="Call SCOPE INDIA Technopark, Trivandrum, Kerala 09745936073">9745936073&nbsp;(TPK)</a>
+        <a href="tel:+919745936073" title="Call SCOPE INDIA Trivandrum, Kerala 09745936073">9745936073&nbsp;(TVM)</a>   
+        <a href="tel:+917592939481" title="Call SCOPE INDIA Kochi, Kerala 07592939481">7592939481&nbsp;(EKM)</a>
+        <a href="tel:+918075536185" title="Call SCOPE INDIA Nagercoil, Kerala 08075536185">8075536185&nbsp;(NGL)</a>
+        <a href="mailto:info@scopeindia.org?subject=I want to know more about courses" title="Email SCOPE INDIA">info@scopeindia.org</a>    
+    </p>
+    <p class="footer-line">
+        All Rights Reserved
+        <a href="https://www.suffixesolutions.com/" title="Suffix E Solutions, a trusted IT Partner, the parent company of SCOPE INDIA" target="_blank">SCOPE INDIA AND SUFFIX E SOLUTIONS PRIVATE LIMITED</a>
+        ©&nbsp;2007-2025 
+        <span>|</span>
+        <a href="privacy-policy.html" title="SCOPE INDIA Privacy Policy"> Privacy Policy </a>
+        <span>|</span>
+            <a href="blog.html" title="SCOPE INDIA Privacy Policy"> Blog </a>
+        
+
+    </p>
+</section>
+<hr class="divider1">
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+{% if messages %}
+<script>
+    {% for message in messages %}
+        Swal.fire({
+            title: "{{ message.tags|capfirst }}",
+            text: "{{ message }}",
+            icon: "{{ message.tags }}"
+        });
+    {% endfor %}
+</script>
+{% endif %}
+     {% block extra_scripts %}
+
+{% endblock extra_scripts %}
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

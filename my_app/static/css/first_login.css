@@ -1,0 +1,132 @@
+/* ---------- GLOBAL WINTER BACKGROUND ---------- */
+
+.winter-page {
+    height: auto;
+    width: 100%;
+    background: linear-gradient(135deg, #e3f2fd, #f8fafc);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    padding: 20px;
+}
+
+
+/* Center Wrapper */
+.winter-wrapper {
+
+    padding: 20px;
+}
+
+/* ---------- LOGIN BOX ---------- */
+
+.winter-login-box {
+    width: 420px;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+
+    padding: 35px 30px;
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(150, 180, 255, 0.25);
+    animation: winterFade 0.7s ease-out;
+}
+
+/* Fade animation */
+@keyframes winterFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- TITLES ---------- */
+
+.winter-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a2b4c;
+    margin-bottom: 5px;
+}
+
+.winter-subtitle {
+    font-size: 14px;
+    color: #435b77;
+    margin-bottom: 25px;
+}
+
+/* ---------- LABELS ---------- */
+
+.winter-label {
+    font-weight: 500;
+    font-size: 14px;
+    color: #23395d;
+    margin-bottom: 4px;
+    display: block;
+}
+
+/* ---------- INPUTS ---------- */
+
+.winter-input {
+    border-radius: 10px !important;
+    border: 1px solid #cfd9e6 !important;
+    padding: 12px !important;
+    background: rgba(255, 255, 255, 0.6);
+    transition: 0.25s ease;
+}
+
+.winter-input:focus {
+    border-color: #7eb4ff !important;
+    box-shadow: 0 0 8px rgba(126, 180, 255, 0.4);
+    background: white;
+}
+
+/* ---------- BUTTON ---------- */
+
+.winter-btn {
+    background: linear-gradient(135deg, #5aa0ff, #006aff);
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: 0.25s ease;
+}
+
+.winter-btn:hover {
+    background: linear-gradient(135deg, #6eb0ff, #227dff);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(80, 140, 255, 0.35);
+}
+
+/* ---------- LINK ---------- */
+
+.winter-link {
+    color: #0056d6;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.winter-link:hover {
+    text-decoration: underline;
+    color: #0041a8;
+}
+
+/* ---------- CHECKBOX ---------- */
+
+.form-check-label {
+    color: #23395d;
+}
+
+.form-check-input:checked {
+    background-color: #006aff !important;
+    border-color: #006aff !important;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 480px) {
+    .winter-login-box {
+        width: 95%;
+        padding: 25px 20px;
+    }
+}

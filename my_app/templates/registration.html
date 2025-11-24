@@ -1,63 +1,7 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-     <link  rel="stylesheet" href="{% static 'css/home.css' %}">
-    <title>Document</title>
-</head>
-<body>
-    <section id="navbar-div" class="heroo-head">
-       <div>
-
-        <div class="heroo-logo">
-        <a class="heroo-scopelogo">
-            <img class="logo" src="{% static 'img/scopeindia-logo-o.png' %}">
-         </a>
-        </div>
-        <div class="heroo-logo star-container">
-            <a class="heroo-starlogo">
-                <img class="star-logo" src="{% static 'img/google-rating-scope-india.webp' %}" alt="">
-            </a>
-        </div>
-
-      
-       </div>
-       <section id="main_navigation">
-       <ul class="nav-elements">
-        <li>
-            <a href="home.html">HERO</a>
-        </li>
-        <li>
-            <a href="">COURSES</a>
-        </li>
-        <li>
-            <a href="" class="registration_link">REGISTRATION</a>
-        </li>
-        <li>
-            <a href="" target="_self">PLACEMENTS</a>
-        </li>
-        <li>
-            <a href="" target="_self">ABOUT US</a>
-        </li>
-        <li>
-            <a href="" target="_self">FAQ</a>
-        </li>
-        <li>
-            <a href="" target="_self">REVIEWS</a>
-        </li>
-        <li>
-            <a href="" target="_self">CONTACT US</a>
-        </li>
-
-       </ul>
-       </section>
-    </section>
-    <hr class="divider1">
-    <section class="hero-intro">
+{% block content %}
+<section class="hero-intro">
         <div class="hero-intro-content">
         <h1  style="text-align: center;">Course Registration at SCOPE INDIA</h1>
         <h2  style="text-align: center;">
@@ -68,11 +12,16 @@
         </h3>
         </div>
     </section>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
         <section class="reg-container">
             <div>
-                <label for="full-name" class="label-block">Full Name (Required)</label>
-                <input class="label-block" type="text" id="full-name" name="full-name" minlength="3" required>
+                <label for="first-name" class="label-block">first Name (Required)</label>
+                <input class="label-block" type="text" id="first-name" name="first_name" minlength="3" required>
+            </div>
+             <div>
+                <label for="last-name" class="label-block">last Name (Required)</label>
+                <input class="label-block" type="text" id="last-name" name="last_name" minlength="3" required>
             </div>
            <div>
                 <label for="dob" class="label-block">Date of Birth (required)</label>
@@ -93,150 +42,77 @@
                     Other
                 </label>
             </div>
-
-             <div>
-                <label for="education" class="label-block">Educational Qualification</label>
-                <input class="label-block" type="text" id="education" name="education" placeholder required>
-            </div>
             <div>
                 <label for="mobile" class="label-block">Mobile Number (required)</label>
                 <input class="label-block" type="tel" id="mobile" name="mobile" placeholder required>
             </div>
             <div>
                 <label for="Email" class="label-block">Email (required)</label>
-                <input class="label-block" type="email" id="Email" name="Email" placeholder required>
+                <input class="label-block" type="email" id="Email" name="email" placeholder required>
             </div>
+            
+        <div>
+  <label for="country" class="label-block">Country</label>
+  <select id="country" name="country" class="label-block" required>
+    <option value="">Loading countries...</option>
+  </select>
+</div>
+<div>
+  <label for="state" class="label-block">State</label>
+  <select id="state" name="state" class="label-block" required>
+    <option value="" class="label-block">Loading states...</option>
+  </select>
+</div>
+            
             <div>
-                <label for="Gname" class="label-block">Guardian's Name</label>
-                <input class="label-block" type="text" id="Gname" name="Gname" placeholder required>
-            </div>
-            <div>
-                <label for="Gocp" class="label-block">Guardian's Occupation</label>
-                <input class="label-block" type="text" id="Gocp" name="Gocp" placeholder required>
-            </div>
-            <div>
-                <label for="Gmobile" class="label-block">Guardian's Mobile</label>
-                <input class="label-block" type="tel" id="Gmobile" name="Gmobile" placeholder required>
-            </div>
-             <div>
-                <label for="register-course" class="label-block">Choose Course (required)</label>
-                <select name="register-course" id="register-course">
-                    <option value="">Choose Your Course</option>
-                    <optgroup label="Software programming courses">
-                        <option value="001">Java Full Stack</option>
-                        <option value="002">Python Full Stack</option>
-                        <option value="003">Asp .net</option>
-                    </optgroup>
-                    <optgroup label="Software Testing">
-                        <option value="004">Software Testing Advanced</option>
-                        <option value="005">Software Testing Manual</option>
-                    </optgroup>
+  <label for="city" class="label-block">City</label>
+  <select id="city" name="city" class="label-block" required>
+    <option value="" class="label-block">select city</option>
+  </select>
+</div>
 
-                </select>
-             </div>
+            <div>
+    <label class="label-block">Hobbies (select one or more)</label>
 
-             <div>
-                <label class="label-block">Training Mode (required)</label>
-                <label for="online">
-                    <input type="radio" id="online" name="mode" value="live" required>
-                    Live Online
-                </label>
-                <label for="Offline">
-                    <input type="radio" id="offline" name="mode" value="offline" required>
-                    Classroom
-                </label>
-                
-            </div>
-            <div>
-                <label class="label-block">Scope India Location</label>
-                <label for="techno">
-                    <input type="radio" id="techno" name="location" value="techno" required>
-                    Technopark TVM
-                </label>
-                <label for="Thampanoor">
-                    <input type="radio" id="Thampanoor" name="Location" value="Thampanoor" required>
-                    Thampanoor TVM
-                </label>
-                <label for="kochi">
-                    <input type="radio" id="kochi" name="Location" value="kochi" required>
-                    Kochi
-                </label>
-                <label for="nagercoil">
-                    <input type="radio" id="nagercoil" name="Location" value="nagercoil" required>
-                    Nagercoil
-                </label>
-                <label for="online-mode">
-                    <input type="radio" id="online-mode" name="Location" value="online-mode" required>
-                    Online
-                </label>
-                
-                
-            </div>
-             <div>
-                <label class="label-block">Prefered Training Timings</label>
-                <label for="timings1">
-                    <input type="checkbox" id="timimgs1" name="cls-timings" value="8-10" required>
-                    Between 8am-10am
-                </label>
-                <br>
-                <label for="timings2">
-                    <input type="checkbox" id="timimgs2" name="cls-timings" value="9-1" required>
-                    Between 9am-1pm
-                </label>
-                <br>
-               <label for="timings3">
-                    <input type="checkbox" id="timimgs3" name="cls-timings" value="1-6" required>
-                    Between 1pm-6pm
-                </label>
-                <br>
-                <label for="timings4">
-                    <input type="checkbox" id="timimgs4" name="cls-timings" value="6-10" required>
-                    Between 6pm-10pm
-                </label>
-                <br>
-            </div>
-             <div>
-                <label for="address" class="label-block">Address</label>
-                <input class="label-block" type="text" id="address" name="address" minlength="3" required>
-            </div>
-            <div>
-                <label for="country" class="label-block">Country</label>
-                <input class="label-block" type="text" id="country" name="country" minlength="3" required>
-            </div>
-            <div>
-                <label for="state" class="label-block">State</label>
-                <input class="label-block" type="text" id="state" name="state" minlength="3" required>
-            </div>
-             <div>
-                <label for="city" class="label-block">City</label>
-                <input class="label-block" type="text" id="city" name="city" minlength="3" required>
-            </div>
-            <div>
-                <label for="pin-code" class="label-block">Pin Code</label>
-                <input class="label-block" type="text" id="pin-code" name="pin-code" minlength="3" required>
-            </div>
+    <label for="hobby1">
+        <input type="checkbox" id="hobby1" name="hobbies" value="reading">
+        Reading
+    </label>
+
+    <label for="hobby2">
+        <input type="checkbox" id="hobby2" name="hobbies" value="sports">
+        Sports
+    </label>
+
+    <label for="hobby3">
+        <input type="checkbox" id="hobby3" name="hobbies" value="music">
+        Music
+    </label>
+
+    <label for="hobby4">
+        <input type="checkbox" id="hobby4" name="hobbies" value="travel">
+        Travel
+    </label>
+    <label for="hobby5">
+        <input type="checkbox" id="hobby5" name="hobbies" value="gaming">
+        Gaming
+    </label>
+    
+</div>
+<div class="mb-3">
+  <label for="avatar" class="form-label">Upload Avatar</label>
+  <input id="avatar" name="avatar" type="file" accept="image/*" class="form-control">
+  <img id="avatarPreview" alt="avatar preview" style="display:none; width:110px; height:110px; object-fit:cover; border-radius:8px; margin-top:10px;">
+</div>
+
+    
             <div class="submit-sec">
-                <button id="submit-button">Complete Registration >></button>
+                <button id="submit-button">SUBMIT >></button>
             </div>
         </section>
     </form>
-<section class="hero-footer">
-    <hr class="footer-hr">
-    <p>We are located at Technopark TVM | Thampanoor TVM | Kochi, Kerala | Nagercoil, Tamil Nadu</p>
-    <p>
-        <a href="tel:+919745936073" title="Call SCOPE INDIA Technopark, Trivandrum, Kerala 09745936073">9745936073&nbsp;(TPK)</a>
-        <a href="tel:+919745936073" title="Call SCOPE INDIA Trivandrum, Kerala 09745936073">9745936073&nbsp;(TVM)</a>   
-        <a href="tel:+917592939481" title="Call SCOPE INDIA Kochi, Kerala 07592939481">7592939481&nbsp;(EKM)</a>
-        <a href="tel:+918075536185" title="Call SCOPE INDIA Nagercoil, Kerala 08075536185">8075536185&nbsp;(NGL)</a>
-        <a href="mailto:info@scopeindia.org?subject=I want to know more about courses" title="Email SCOPE INDIA">info@scopeindia.org</a>    
-    </p>
-    <p class="footer-line">
-        All Rights Reserved
-        <a href="https://www.suffixesolutions.com/" title="Suffix E Solutions, a trusted IT Partner, the parent company of SCOPE INDIA" target="_blank">SCOPE INDIA AND SUFFIX E SOLUTIONS PRIVATE LIMITED</a>
-        ©&nbsp;2007-2025 
-        <span>|</span>
-        <a href="privacy-policy.html" title="SCOPE INDIA Privacy Policy"> Privacy Policy </a>
-        <span>|</span>
-            <a href="blog.html" title="SCOPE INDIA Privacy Policy"> Blog </a>
-    </p>
-</section>
+
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'js/dropdownlist.js' %}"></script>
+{% endblock %}
