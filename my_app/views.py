@@ -7,7 +7,6 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 
-
 def home(request):
     return render(request,'home.html')
 
@@ -86,9 +85,9 @@ def scopelogin(request):
     saved_email=request.COOKIES.get('remember_me','')
     if request.method=='POST':
         email=request.POST.get('email')
-        password=request.post.get('password')
+        password=request.POST.get('password')
         temp_password=request.POST.get('temp_password')
-        remember_me=request.POst.get('remember_me')
+        remember_me=request.POST.get('remember_me')
         
         user=User.objects.filter(email=email).first()
         if not user:
@@ -98,15 +97,15 @@ def scopelogin(request):
         profile=user.profile
 
         if temp_password:
-            if profile.temp_password==temp_password:
+            if str(profile.temp_password)==str(temp_password):
                 request.session['reset_user']=user.id
-                return redirect('create_newpassword')
+                return redirect('create_new_password')
             else:
                 messages.error(request,'invalid temporary password')
                 return redirect('scopelogin')
             
         user=authenticate(username=email,password=password)
-        
+
         if user:
             login(request,user) 
             response=redirect('dashboard')
@@ -114,16 +113,58 @@ def scopelogin(request):
             if remember_me:
                 response.set_cookie('remember_me',email,max_age=7*24*60*60)
             else:
-                response.delete_cookie(remember_me)
+                response.delete_cookie('remember_me')
             
             return response
         else:
             messages.error(request,'invalid cardentials')
             return redirect('scopelogin')
             
-    return render(request,'scopelogin.html',{'saved_email':'saved_email'})
+    return render(request, "scopelogin.html", {"saved_email": saved_email})
 def forgot_password(request):
     return render(request,'forgot_password.html')
 def first_time_login(request):
-    pass
+    if request.method=='POST':
+        email=request.POST.get('email')
+        user=User.objects.filter(email=email).first()
+        if not user:
+            messages.error(request,'email not registered')
+            return redirect('scopelogin')
+        
+        temp_pass=str(uuid.uuid4())[:8]
+        user.profile.temp_password=temp_pass
+        user.profile.save()
+        send_mail(
+            subject="temporary password",
+            message=f"your temporary password is{temp_pass}",
+            from_email="mervinr2002@gmail.com",
+            recipient_list=[email],
+            fail_silently=False
+        )
+        messages.success(request,'temporary password send to your mail')
+        return redirect('scopelogin')
+   
+
+    return render(request,'first_time_login.html')
     
+def create_new_password(request):
+    user_id=request.session.get('reset_user')
+    if not user_id:
+        return redirect('scopelogin')
+    user=User.objects.get(id=user_id)
+    if request.method=='POST':
+        password1=request.POST.get('password1')
+        password2=request.POST.get('password2')
+        if password1!=password2:
+            messages.error(request,'passwords must match')
+            return redirect('create_new_password')
+        user.set_password(password1)
+        user.save()
+        user.profile.temp_password=None
+        user.profile.save()
+        del request.session['reset_user']
+        messages.success(request,'password created successfully please login')
+        return redirect('scopelogin')
+    return render(request,'create_new_password.html')
+def dashboard(request):
+    return render(request,'dashboard.html')
