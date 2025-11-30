@@ -5,7 +5,8 @@ from .models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate
-from django.contrib.auth import login
+from django.contrib.auth import login,logout
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     return render(request,'home.html')
@@ -130,7 +131,9 @@ def first_time_login(request):
         if not user:
             messages.error(request,'email not registered')
             return redirect('scopelogin')
-        
+        if user.profile.email_verified==False:
+            messages.error(request,'please verify your email first')
+            return redirect('first_time_login')
         temp_pass=str(uuid.uuid4())[:8]
         user.profile.temp_password=temp_pass
         user.profile.save()
@@ -166,5 +169,117 @@ def create_new_password(request):
         messages.success(request,'password created successfully please login')
         return redirect('scopelogin')
     return render(request,'create_new_password.html')
+
+def contact_form(request):
+    if request.method=='POST':
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        subject=request.POST.get('subject')
+        message=request.POST.get('message')
+
+        if not name or not email or not subject or not message:
+            messages.error(request,'all fields are required')
+        ContactMessage.objects.create(
+            name=name,
+            email=email,
+            subject=subject,
+            message=message
+        )
+        try:
+            send_mail(
+                subject=subject,
+                message=message,
+                from_email=email,
+                recipient_list=['info@scopeindia.org'],
+                fail_silently=False
+            )
+            messages.success(request,'your message has been sent succesfully')
+        except:
+            messages.error(request,'unable to send email right now please try again later')
+        return redirect('contactus')
+
+    return render(request,'contact_form.html')
+
+@login_required
 def dashboard(request):
-    return render(request,'dashboard.html')
+    query=request.GET.get('search')
+    if query:
+        courses=Course.objects.filter(name_icontains=query)
+    else:
+        courses=Course.objects.all()
+    my_courses=Student_courses.objects.filter(student=request.user)
+    context={
+        'courses':courses,
+        'my_courses':my_courses,
+        'query':query
+    }
+    return render(request,'dashboard.html',context)
+@login_required
+def signedup_course(request,course_id):
+    course=Course.objects.filter(id=course_id).first()
+    if not course:
+        messages.error(request,'no course found')
+        return redirect('dashboard')
+    exists=Student_courses.objects.filter(student=request.user,course=course).first()
+    if exists:
+        messages.error(request,'you have already chosen that course')
+        return redirect('dashboard')
+    Student_courses.objects.create(
+        student=request.user,
+        course=course
+    )
+    messages.success(request,'you have signed up for this course')
+    return redirect('dashboard')
+
+@login_required
+def edit_profile(request):
+    profile = request.user.profile
+    user = request.user 
+
+    if request.method == "POST":
+
+        user.first_name = request.POST.get("first_name")
+        user.last_name = request.POST.get("last_name")
+        user.save()
+
+        profile.phone = request.POST.get("phone")
+        profile.city = request.POST.get("city")
+        profile.state = request.POST.get("state")
+        profile.country = request.POST.get("country")
+        profile.hobbies = request.POST.get("hobbies")
+
+
+        if request.FILES.get("avatar"):
+            profile.avatar = request.FILES.get("avatar")
+
+        profile.save()
+
+        messages.success(request, "Profile updated successfully")
+        return redirect("edit_profile")
+
+    return render(request, "edit_profile.html", {"profile": profile, "user": user})
+
+@login_required
+def change_password(request):
+
+    if request.method=='POST':
+        old=request.POST.get('old_password')
+        new=request.POST.get('new_password')
+
+        if not request.user.check_password(old):
+            messages.error(request,'incorrect old password')
+            return redirect('change_password')
+        request.user.set_password(new)
+        request.user.save()
+
+        logout(request)
+        messages.success(request,'passwordword changed successfully please login again')
+        return redirect('scopelogin')
+    return render(request,'change_password.html')
+
+def logout_user(request):
+    logout(request)
+    response=redirect('scopelogin')
+    response.delete_cookie('remember_me')
+    return response
+

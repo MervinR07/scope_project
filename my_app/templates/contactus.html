@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css/first_login.css' %}">
+{% endblock %}
 {% block content %}
  <section class="hero-intro">
         <div class="hero-intro-content">
@@ -64,5 +67,8 @@
             <a href="mailto:ngl@scopeindia.org">ngl@scopeindia.org</a>
             <a href="https://goo.gl/maps/fVjnoN7GzcU1zson7" target="_blank">Location Route Map</a>
         </div>
+       <a href="{% url 'contact_form' %}">
+    <button class="winter-btn w-100 mt-2">Contact us</button>
+</a>
     </section>
     {% endblock %}

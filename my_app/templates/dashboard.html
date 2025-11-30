@@ -1,5 +1,102 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block content %}
+<!DOCTYPE html>
 
-{% endblock %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    
+
+
+
+<div class="dash-wrapper">
+
+    <aside class="right-sidebar">
+        <div class="profile-box">
+            <img src="{{ request.user.profile.avatar.url }}" class="avatar" alt="Avatar">
+            <h3>{{ request.user.first_name }} {{ request.user.last_name }}</h3>
+            <p>{{ request.user.email }}</p>
+        </div>
+
+        <ul class="menu">
+            <li onclick="showTab('home')" class="active">Dashboard</li>
+            <li onclick="showTab('search')">Search Courses</li>
+            <li onclick="showTab('mycourses')">My Courses</li>
+            <li onclick="window.location='{% url 'edit_profile' %}'">Edit Profile</li>
+            <li onclick="window.location='{% url 'change_password' %}'">Change Password</li>
+            <li><a class="logout" href="{% url 'logout_user' %}">Logout</a></li>
+        </ul>
+    </aside>
+
+   
+    <main class="dash-content">
+
+     
+        <section id="home" class="tab-section">
+            <h1 class="title">Welcome back, {{ request.user.first_name }}! 👋</h1>
+            <p class="subtitle">Manage your courses and profile easily.</p>
+        </section>
+
+     
+        <section id="search" class="tab-section hidden">
+            <h2 class="title">Search Courses</h2>
+
+            <form method="GET" class="search-form">
+                <input type="text" name="search" value="{{ query }}" placeholder="Search for a course…">
+                <button class="btn-orange">Search</button>
+            </form>
+
+            <div class="course-grid">
+                {% for c in courses %}
+                <div class="card course-card">
+                    <h3>{{ c.name }}</h3>
+                    <p>Duration: {{ c.duration }}</p>
+                    <p>Fee: ₹{{ c.fee }}</p>
+
+                    <form method="POST" action="{% url 'signedup_course' c.id %}">
+                        {% csrf_token %}
+                        <button class="btn-blue">Sign Up</button>
+                    </form>
+                </div>
+                {% empty %}
+                <p>No courses found</p>
+                {% endfor %}
+            </div>
+        </section>
+
+    
+        <section id="mycourses" class="tab-section hidden">
+            <h2 class="title">My Courses</h2>
+
+            <div class="course-grid">
+                {% for c in my_courses %}
+                <div class="card mycourse-card">
+                    <h3>{{ c.course.name }}</h3>
+                    <p>{{ c.course.duration }}</p>
+                    <p>₹{{ c.course.fee }}</p>
+                </div>
+                {% empty %}
+                <p>You haven't signed up for any course yet.</p>
+                {% endfor %}
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script>
+function showTab(tabId) {
+    document.querySelectorAll('.tab-section').forEach(t => t.classList.add('hidden'));
+    document.getElementById(tabId).classList.remove('hidden');
+
+    document.querySelectorAll('.menu li').forEach(li => li.classList.remove('active'));
+    event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>
