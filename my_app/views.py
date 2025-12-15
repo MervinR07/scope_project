@@ -83,46 +83,77 @@ def verify(request,token):
 def contactus(request):
     return render(request,'contactus.html')
 def scopelogin(request):
-    saved_email=request.COOKIES.get('remember_me','')
-    if request.method=='POST':
-        email=request.POST.get('email')
-        password=request.POST.get('password')
-        temp_password=request.POST.get('temp_password')
-        remember_me=request.POST.get('remember_me')
-        
-        user=User.objects.filter(email=email).first()
-        if not user:
-            messages.error(request,"email not registered")
-            return redirect('scopelogin')
-        
-        profile=user.profile
+    saved_email = request.COOKIES.get('remember_me', '')
+    context = {'saved_email': saved_email, "has_password": True}  
 
-        if temp_password:
-            if str(profile.temp_password)==str(temp_password):
-                request.session['reset_user']=user.id
+    if request.method == 'POST':
+
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        temp_password = request.POST.get('temp_password')
+        remember_me = request.POST.get('remember_me')
+
+        user = User.objects.filter(email=email).first()
+
+        if not user:
+            messages.error(request, "Email not registered")
+            return redirect('scopelogin')
+
+      
+        context["has_password"] = user.has_usable_password()
+
+        profile = user.profile
+
+   
+        if temp_password and not context["has_password"]:
+            if str(profile.temp_password) == str(temp_password):
+                request.session['reset_user'] = user.id
                 return redirect('create_new_password')
             else:
-                messages.error(request,'invalid temporary password')
+                messages.error(request, 'Invalid temporary password')
                 return redirect('scopelogin')
-            
-        user=authenticate(username=email,password=password)
+
+     
+        user = authenticate(username=email, password=password)
 
         if user:
-            login(request,user) 
-            response=redirect('dashboard')
+            login(request, user)
+            response = redirect('dashboard')
 
+          
             if remember_me:
-                response.set_cookie('remember_me',email,max_age=7*24*60*60)
+                response.set_cookie('remember_me', email, max_age=7*24*60*60)
             else:
                 response.delete_cookie('remember_me')
-            
+
             return response
+
         else:
-            messages.error(request,'invalid cardentials')
+            messages.error(request, 'Invalid credentials')
             return redirect('scopelogin')
-            
-    return render(request, "scopelogin.html", {"saved_email": saved_email})
+
+    return render(request, "scopelogin.html", context)
+
 def forgot_password(request):
+    if request.method=='POST':
+        email=request.POST.get('email')
+        user=User.objects.filter(email=email)
+        if not user:
+            messages.error(request,'email not registered')
+            return redirect('forgot_password')
+        temp_password=str(uuid.uuid4())[:8]
+        user.profile.temp_password=temp_password
+        user.profile.save()
+        send_mail(
+            subject='your temporary password',
+            message=f"your otp to login is {temp_password}",
+            from_email='mervinr2002@gmail.com',
+            recipient_list=[email]
+        )
+        messages.success(request,'otp sent to your email')
+        return redirect('scopelogin')
+
+
     return render(request,'forgot_password.html')
 def first_time_login(request):
     if request.method=='POST':
@@ -202,16 +233,20 @@ def contact_form(request):
 
 @login_required
 def dashboard(request):
+    
     query=request.GET.get('search')
+    active_tab = "search" if query else "home"
     if query:
-        courses=Course.objects.filter(name_icontains=query)
+        courses=Course.objects.filter(name__icontains=query)
+        
     else:
         courses=Course.objects.all()
     my_courses=Student_courses.objects.filter(student=request.user)
     context={
         'courses':courses,
         'my_courses':my_courses,
-        'query':query
+        'query':query,
+        'active_tab':active_tab
     }
     return render(request,'dashboard.html',context)
 @login_required
@@ -255,9 +290,8 @@ def edit_profile(request):
         profile.save()
 
         messages.success(request, "Profile updated successfully")
-        return redirect("edit_profile")
+        return redirect("dashboard")
 
-    return render(request, "edit_profile.html", {"profile": profile, "user": user})
 
 @login_required
 def change_password(request):
@@ -275,8 +309,16 @@ def change_password(request):
         logout(request)
         messages.success(request,'passwordword changed successfully please login again')
         return redirect('scopelogin')
-    return render(request,'change_password.html')
-
+    
+@login_required
+def remove_course(request,course_id):
+    course=Course.objects.filter(id=course_id).first()
+    Student_courses.objects.filter(
+             student=request.user,
+             course=course
+    ).delete()
+    messages.success(request,'you have withdrawn fromthe course')
+    return redirect('dashboard')
 def logout_user(request):
     logout(request)
     response=redirect('scopelogin')

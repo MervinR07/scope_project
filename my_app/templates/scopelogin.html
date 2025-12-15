@@ -32,11 +32,11 @@
                 <label class="form-label winter-label">Password</label>
                 <input type="password" class="form-control winter-input" name="password">
             </div>
-
-            <div class="mb-3">
-                <label class="form-label winter-label">Temporary Password (If First Login)</label>
-                <input type="text" class="form-control winter-input" name="temp_password">
-            </div>
+<div class="mb-3" id="temp-box" 
+     style="{% if has_password %}display:none;{% endif %}">
+    <label class="form-label winter-label">Temporary Password (If First Login)</label>
+    <input type="text" class="form-control winter-input" name="temp_password">
+</div>
 
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <div class="form-check">
